@@ -385,12 +385,12 @@ const flexcraftDashboard = () => {
         </div>
         
         <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-xl overflow-hidden shadow-lg">
-          <div className="w-full h-full flex items-center justify-center bg-gray-800">
+          <div className="w-full h-full flex items-center justify-center ">
             {/* Video placeholder - replace with actual video embed */}
             <div className="relative w-full h-0 pb-[56.25%]">
-            <div className="relative w-full h-0 pb-[56.25%] bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+            <div className="relative w-full h-0 pb-[56.25%] rounded-xl overflow-hidden shadow-lg">
   <video
-    className="absolute top-0 left-0 w-full h-full object-cover"
+    className="absolute top-0 left-0 w-full h-full object-contain"
     autoPlay
     muted
     loop

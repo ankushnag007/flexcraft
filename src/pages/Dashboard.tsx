@@ -4,9 +4,15 @@ import {
   Clock, Users, Database, Server, Code, Shield, Sun, Moon, X, 
   UserPlus, Edit, Trash, ChevronDown, ChevronUp, Search, Filter, 
   Lock, Unlock, Eye, EyeOff, Mail, Phone, Key, Plus, Minus, 
-  UserCheck, UserX, RefreshCw,  Coffee, Bell,  
+  UserCheck, UserX, RefreshCw,  Coffee, Bell,  Folder, 
+  Code2, 
+   
+   
+  FileText 
 } from 'lucide-react';
 import  logo from  '../Assets/videos/images/logo.png';
+import  user from  '../Assets/videos/images/user.jpg';
+
 const FlexCraftDashboard = () => {
   const [timeOfDay, setTimeOfDay] = useState('morning');
   const [currentTime, setCurrentTime] = useState('');
@@ -680,34 +686,48 @@ const FlexCraftDashboard = () => {
               <div className="hidden md:ml-10 md:flex md:space-x-8">
                   <img src={logo} className="h-6 w-auto" /> {/* Adjusted height and width */}
                 
-                <a 
-                  href="#" 
-                  className={`${activeTab === 'projects' ? 'text-blue-600' : 'text-gray-500'} hover:text-gray-700`}
-                  onClick={() => setActiveTab('projects')}
-                >
-                  Projects
-                </a>
-                <a 
-                  href="#" 
-                  className={`${activeTab === 'api' ? 'text-blue-600' : 'text-gray-500'} hover:text-gray-700`}
-                  onClick={() => setActiveTab('api')}
-                >
-                  API
-                </a>
-                <a 
-                  href="#" 
-                  className={`${activeTab === 'team' ? 'text-blue-600' : 'text-gray-500'} hover:text-gray-700`}
-                  onClick={() => setActiveTab('team')}
-                >
-                  Team
-                </a>
-                <a 
-                  href="#" 
-                  className={`${activeTab === 'settings' ? 'text-blue-600' : 'text-gray-500'} hover:text-gray-700`}
-                  onClick={() => setActiveTab('settings')}
-                >
-                  Settings
-                </a>
+                  <nav className="flex space-x-8">
+  <a
+    href="#"
+    className={`flex items-center space-x-1.5 ${activeTab === 'projects' ? 'text-blue-600' : 'text-gray-500'} hover:text-gray-700 transition-colors`}
+    onClick={() => setActiveTab('projects')}
+  >
+    <Folder className="h-4 w-4" />
+    <span>Projects</span>
+  </a>
+  <a
+    href="#"
+    className={`flex items-center space-x-1.5 ${activeTab === 'api' ? 'text-blue-600' : 'text-gray-500'} hover:text-gray-700 transition-colors`}
+    onClick={() => setActiveTab('api')}
+  >
+    <Code2 className="h-4 w-4" />
+    <span>API</span>
+  </a>
+  <a
+    href="#"
+    className={`flex items-center space-x-1.5 ${activeTab === 'team' ? 'text-blue-600' : 'text-gray-500'} hover:text-gray-700 transition-colors`}
+    onClick={() => setActiveTab('team')}
+  >
+    <Users className="h-4 w-4" />
+    <span>Team</span>
+  </a>
+  <a
+    href="#"
+    className={`flex items-center space-x-1.5 ${activeTab === 'settings' ? 'text-blue-600' : 'text-gray-500'} hover:text-gray-700 transition-colors`}
+    onClick={() => setActiveTab('settings')}
+  >
+    <Settings className="h-4 w-4" />
+    <span>Settings</span>
+  </a>
+  <a
+    href="#"
+    className={`flex items-center space-x-1.5 ${activeTab === 'reports' ? 'text-blue-600' : 'text-gray-500'} hover:text-gray-700 transition-colors`}
+    onClick={() => setActiveTab('reports')}
+  >
+    <FileText className="h-4 w-4" />
+    <span>Reports</span>
+  </a>
+</nav>
               </div>
             </div>
             <div className="flex items-center space-x-4">
@@ -1053,12 +1073,16 @@ const FlexCraftDashboard = () => {
           <div className={`${styles.bg} p-6 rounded-xl shadow-sm`}>
       <div className="flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <div className={`p-3 rounded-full ${styles.bg} shadow-inner`}>
-            {styles.icon}
-          </div>
+         
+            <img src={user} className='h-24 w-24 rounded-full'/>
+
           <div>
             <h1 className={`text-2xl font-bold ${styles.text}`}>Hello, Alex</h1>
+            {/* <img src={logo} className='h-24 w-24 rounded'/> */}
             <div className="flex items-center space-x-2">
+            <div className={`p-3 rounded-full ${styles.bg} shadow-inner`}>
+            {styles.icon}
+          </div>
               <p className={`font-medium ${styles.text}`}>{styles.greeting}</p>
               <span className="text-sm text-gray-500">• {currentTime}</span>
             </div>

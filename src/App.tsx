@@ -13,7 +13,7 @@ import Dashboard from './pages/Dashboard';
 import EmailApp from './pages/Email';
 import Figma from './pages/Figma'
 function App() {
-  const isAuthenticated = true; // Replace with your actual auth logic
+  const isAuthenticated = false; // Replace with your actual auth logic
 
   return (
     <Router>
