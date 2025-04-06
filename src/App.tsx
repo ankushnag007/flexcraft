@@ -15,7 +15,7 @@ import Figma from './pages/Figma';
 import Workflow from './pages/Workflow'
 
 function App() {
-  const isAuthenticated = true; // Replace with your actual auth logic
+  const isAuthenticated = false; // Replace with your actual auth logic
 
   return (
     <Router>
