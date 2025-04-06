@@ -4,6 +4,7 @@ import {
   RefreshCw, MoreVertical, Paperclip, Archive, Clock, Tag, Minus, X,
   ChevronLeft, ChevronRight, MailOpen, Reply, Forward, Filter, Folder
 } from 'lucide-react';
+import EmailListSkeleton from './EmailSkeleton';
 
 const EmailApp = () => {
   // State for emails
@@ -37,7 +38,49 @@ const EmailApp = () => {
     body: '',
     attachments: []
   });
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [notifications, setNotifications] = useState([
+    {
+      id: 1,
+      title: 'New Message',
+      message: 'You have received a new message from John Doe',
+      time: '2 minutes ago',
+      unread: true,
+    },
+    {
+      id: 2,
+      title: 'System Update',
+      message: 'A new system update is available',
+      time: '1 hour ago',
+      unread: false,
+    },
+    {
+      id: 3,
+      title: 'Reminder',
+      message: 'Meeting with the team at 3 PM',
+      time: 'Yesterday',
+      unread: true,
+    },
+  ]);
 
+  const toggleDrawer = () => {
+    setIsOpen(!isOpen);
+    
+    // Mark notifications as read when opening
+    if (!isOpen) {
+      setNotifications(notifications.map(notification => ({
+        ...notification,
+        unread: false
+      })));
+    }
+  };
+  const handleSync = () => {
+    setIsSyncing(true);
+    setTimeout(() => {
+      setIsSyncing(false);
+    }, 1500);
+  };
   // Filter emails based on current folder and search
   const filteredEmails = emails.filter(email => {
     // Folder filtering
@@ -232,9 +275,21 @@ const EmailApp = () => {
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <button className="p-2 rounded-full hover:bg-gray-100">
-              <RefreshCw className="h-5 w-5 text-gray-600" />
-            </button>
+          <div className="flex space-x-3">
+          <button
+            onClick={handleSync}
+            disabled={isSyncing}
+            className={`flex items-center px-3 py-1.5 rounded-md bg-gray-100 hover:bg-gray-200 ${
+              isSyncing ? "opacity-70" : ""
+            }`}
+          >
+            <RefreshCw
+              className={`w-4 h-4 mr-2 ${isSyncing ? "animate-spin" : ""}`}
+            />
+            <span>Sync</span>
+          </button>
+     
+        </div>
             <button className="p-2 rounded-full hover:bg-gray-100">
               <Filter className="h-5 w-5 text-gray-600" />
             </button>
@@ -281,7 +336,9 @@ const EmailApp = () => {
                 </button>
               </div>
             </div>
-
+{
+  isSyncing ?
+  <EmailListSkeleton />:
             <ul className="divide-y divide-gray-200">
               {filteredEmails.map((email) => (
                 <li 
@@ -336,7 +393,8 @@ const EmailApp = () => {
                   </div>
                 </li>
               ))}
-            </ul>
+            </ul> 
+}
           </div>
 
           {/* Email Content */}

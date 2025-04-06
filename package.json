@@ -10,16 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@livekit/components-react": "^2.0.0",
+    "@livekit/components-styles": "^1.0.9",
+    "@octokit/rest": "^20.0.2",
     "@supabase/supabase-js": "^2.39.7",
+    "framer-motion": "^12.6.3",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.22.2",
-    "zustand": "^4.5.1",
-    "@livekit/components-react": "^2.0.0",
-    "@livekit/components-styles": "^1.0.9",
     "socket.io-client": "^4.7.4",
-    "@octokit/rest": "^20.0.2"
+    "zustand": "^4.5.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",

@@ -4,7 +4,7 @@ import {
   Clock, Users, Database, Server, Code, Shield, Sun, Moon, X, 
   UserPlus, Edit, Trash, ChevronDown, ChevronUp, Search, Filter, 
   Lock, Unlock, Eye, EyeOff, Mail, Phone, Key, Plus, Minus, 
-  UserCheck, UserX, RefreshCw,  Coffee, Bell,  Folder, 
+  UserCheck, UserX, RefreshCw,  Coffee, Bell,  Folder,
   Code2, 
    
    
@@ -733,7 +733,14 @@ const FlexCraftDashboard = () => {
             <div className="flex items-center space-x-4">
               <button className="p-2 text-gray-500 hover:text-gray-700">
                 <Settings className="h-5 w-5" />
-              </button>
+                </button>
+
+             <button className="p-2 text-gray-500 hover:text-gray-700 relative">
+  <Bell className="h-5 w-5" />
+  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+    3
+  </span>
+</button>
               <div className="flex items-center">
                 <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-medium">
                   JD

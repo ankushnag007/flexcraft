@@ -1,9 +1,27 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import video from '../Assets/videos/motiongraphic.mp4';
+import video2 from '../Assets/videos/motiongraphic2.mp4';
+import video3 from '../Assets/videos/motiongraphic3.mp4';
+
 import demoImage from '../Assets/videos/images/demoimage.png'
 import logo from '../Assets/videos/images/logo.png'
+import logo2 from '../Assets/videos/images/giflogo.gif'
+
+import ImageWithLoader from '../components/AppLoader';
+import { Loader2 } from 'lucide-react';
 
 const flexcraftDashboard = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading (replace with your actual loading logic)
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 seconds for demo
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [email, setEmail] = useState('');
@@ -25,9 +43,28 @@ const flexcraftDashboard = () => {
     console.log('Signup submitted:', { name, email, password });
     setShowSignupModal(false);
   };
+        if (isLoading) {
+          return (
+            <div className="fixed inset-0 z-50 flex flex-col items-center justify-center">
+            <div className="mb-4">
+              <ImageWithLoader 
+                src={logo2}
+                alt="App Logo"
+                loaderColor="text-blue-400"
+                className="h-24 w-25 rounded-full"
+              />
+            </div>
+            {/* <Loader2 className="h-8 w-8 animate-spin text-blue-400" /> */}
+            <p className="mt-4 text-blue-900 font-bold">Preparing your project, please wait...</p>
+          </div>
+          );
+        }
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+    
+    <div className=" bg-gray-50">
       {/* Header */}
+     
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center">
@@ -58,13 +95,13 @@ const flexcraftDashboard = () => {
 
       {/* Login Modal */}
       {showLoginModal && (
-        <div className="fixed inset-0 z-50 overflow-y-auto">
+        <div className="fixed inset-0 z-50 ">
           <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div className="fixed inset-0 transition-opacity" aria-hidden="true">
               <div className="absolute inset-0 bg-gray-500 opacity-75" onClick={() => setShowLoginModal(false)}></div>
             </div>
             <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+            <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left  shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
               <div>
                 <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100">
                   <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -196,7 +233,7 @@ const flexcraftDashboard = () => {
 
       {/* Signup Modal */}
       {showSignupModal && (
-        <div className="fixed inset-0 z-50 overflow-y-auto">
+        <div className="fixed inset-0 z-50 ">
           <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div className="fixed inset-0 transition-opacity" aria-hidden="true">
               <div className="absolute inset-0 bg-gray-500 opacity-75" onClick={() => setShowSignupModal(false)}></div>
@@ -410,6 +447,321 @@ const flexcraftDashboard = () => {
       
       </div>
 
+
+      {/* Feature Highlights */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Everything Your Team Needs in One Platform</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Project Management */}
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <div className="text-blue-600 mb-4">
+              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Project Management</h3>
+            <p className="text-gray-500">
+              Complete project tracking with issues, sprints, roadmaps, and customizable workflows.
+            </p>
+            <div className="mt-4">
+              <a href="#" className="text-blue-600 text-sm font-medium hover:text-blue-700">Explore features →</a>
+            </div>
+          </div>
+
+          {/* Deployment Tools */}
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <div className="text-blue-600 mb-4">
+              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Deployment Tools</h3>
+            <p className="text-gray-500">
+              Full CI/CD pipeline integration with automated deployments and rollback capabilities.
+            </p>
+            <div className="mt-4">
+              <a href="#" className="text-blue-600 text-sm font-medium hover:text-blue-700">Learn more →</a>
+            </div>
+          </div>
+
+          {/* API Testing */}
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <div className="text-blue-600 mb-4">
+              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">API Testing</h3>
+            <p className="text-gray-500">
+              Powerful API testing suite with collections, environments, and automated testing.
+            </p>
+            <div className="mt-4">
+              <a href="#" className="text-blue-600 text-sm font-medium hover:text-blue-700">Try it out →</a>
+            </div>
+          </div>
+
+          {/* Video & Chat */}
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <div className="text-blue-600 mb-4">
+              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v8a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Video & Chat</h3>
+            <p className="text-gray-500">
+              Integrated video meetings and team chat with file sharing and threaded conversations.
+            </p>
+            <div className="mt-4">
+              <a href="#" className="text-blue-600 text-sm font-medium hover:text-blue-700">See how it works →</a>
+            </div>
+          </div>
+
+          {/* GitHub Integration */}
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <div className="text-blue-600 mb-4">
+              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">GitHub Integration</h3>
+            <p className="text-gray-500">
+              Full GitHub integration with repo management, PR reviews, and deployment triggers.
+            </p>
+            <div className="mt-4">
+              <a href="#" className="text-blue-600 text-sm font-medium hover:text-blue-700">Connect your repos →</a>
+            </div>
+          </div>
+
+          {/* AI Insights */}
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <div className="text-blue-600 mb-4">
+              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">AI Insights</h3>
+            <p className="text-gray-500">
+              AI-powered code review, issue suggestions, and automated documentation.
+            </p>
+            <div className="mt-4">
+              <a href="#" className="text-blue-600 text-sm font-medium hover:text-blue-700">See AI in action →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Unified Platform Section */}
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+            <div className="mb-8 lg:mb-0">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">One Platform, Endless Possibilities</h2>
+              <p className="text-lg text-gray-500 mb-6">
+                flexcraft brings together all the tools your team needs to build, deploy, and manage projects without switching between multiple apps.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <svg className="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Single sign-on with GitHub or custom email</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Unified dashboard for all project activities</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Cross-functional collaboration tools</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Enterprise-grade security and compliance</span>
+                </li>
+              </ul>
+            </div>
+            <div className="relative w-full h-80 bg-gray-100 overflow-hidden rounded-lg shadow-lg">
+  {/* Video container with same dimensions as original image */}
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="absolute inset-0 w-full h-full object-fill"
+    poster={demoImage} // Fallback image matching your original
+  >
+    <source src={video2} type="video/mp4" />
+    {/* Fallback to original image if video can't load */}
+    <img src={demoImage} alt="Fallback content" className="w-full h-full object-cover" />
+  </video>
+  
+  {/* Optional content overlay (keep if needed) */}
+  <div className="relative z-10 p-8 text-white">
+    {/* Your overlay content here */}
+  </div>
+</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Unified Platform Section */}
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+          <div className="relative w-full h-80 bg-gray-100 overflow-hidden rounded-lg shadow-lg">
+  {/* Video container with same dimensions as original image */}
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="absolute inset-0 w-full h-full object-fill"
+    poster={demoImage} // Fallback image matching your original
+  >
+    <source src={video3} type="video/mp4" />
+    {/* Fallback to original image if video can't load */}
+    <img src={demoImage} alt="Fallback content" className="w-full h-full object-cover" />
+  </video>
+  
+  {/* Optional content overlay (keep if needed) */}
+  <div className="relative z-10 p-8 text-white">
+    {/* Your overlay content here */}
+  </div>
+</div>
+            <div className="mb-8 lg:mb-0">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">One Platform, Endless Possibilities</h2>
+              <p className="text-lg text-gray-500 mb-6">
+                flexcraft brings together all the tools your team needs to build, deploy, and manage projects without switching between multiple apps.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <svg className="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Single sign-on with GitHub or custom email</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Unified dashboard for all project activities</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Cross-functional collaboration tools</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Enterprise-grade security and compliance</span>
+                </li>
+              </ul>
+            </div>
+         
+          </div>
+        </div>
+      </div>
+      {/* AI Capabilities Section */}
+      <div className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">AI-Powered Development Insights</h2>
+            <p className="text-lg text-gray-500 max-w-3xl mx-auto">
+              Our AI analyzes your code, issues, and team activity to provide actionable insights and automate repetitive tasks.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="text-blue-600 mb-4">
+                <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">Code Review Assistant</h3>
+              <p className="text-gray-500">
+                AI suggests improvements and catches potential issues in pull requests before they're merged.
+              </p>
+            </div>
+            
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="text-blue-600 mb-4">
+                <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                  <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">Automated Documentation</h3>
+              <p className="text-gray-500">
+                Generates and maintains documentation based on code changes and commit messages.
+              </p>
+            </div>
+            
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="text-blue-600 mb-4">
+                <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">Predictive Analytics</h3>
+              <p className="text-gray-500">
+                Forecasts project timelines and identifies potential bottlenecks before they occur.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Integration Section */}
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Seamless Integrations</h2>
+            <p className="text-lg text-gray-500 max-w-3xl mx-auto">
+              flexcraft works with the tools you already use, connecting your entire workflow.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center">
+              <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" className="h-12" />
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center">
+              <img src="https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg" alt="Slack" className="h-12" />
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+<path fill="#5c6bc0" d="M41.5 13A3.5 3.5 0 1 0 41.5 20 3.5 3.5 0 1 0 41.5 13zM4 40l23 4V4L4 8V40z"></path><path fill="#fff" d="M21 16.27L21 19 17.01 19.18 16.99 31.04 14.01 30.95 14.01 19.29 10 19.45 10 16.94z"></path><path fill="#5c6bc0" d="M36 14c0 2.21-1.79 4-4 4-1.2 0-2.27-.53-3-1.36v-5.28c.73-.83 1.8-1.36 3-1.36C34.21 10 36 11.79 36 14zM38 23v11c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H45v-8H38zM29 20v17c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H36V20H29z"></path>
+</svg>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center">
+              <img src="https://cdn.worldvectorlogo.com/logos/postman.svg" alt="Postman" className="h-12" />
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center">
+              <img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="Jira" className="h-12" />
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center">
+              <img src="https://cdn.worldvectorlogo.com/logos/trello.svg" alt="Trello" className="h-12" />
+            </div>
+          </div>
+          
+          <div className="mt-12 text-center">
+            <a href="#" className="text-blue-600 text-lg font-medium hover:text-blue-700">View all integrations →</a>
+          </div>
+        </div>
+      </div>
+
+
       {/* Pricing Section */}
       <div className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -593,241 +945,6 @@ const flexcraftDashboard = () => {
           </div>
         </div>
       </div>
-
-      {/* Feature Highlights */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Everything Your Team Needs in One Platform</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Project Management */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-blue-600 mb-4">
-              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Project Management</h3>
-            <p className="text-gray-500">
-              Complete project tracking with issues, sprints, roadmaps, and customizable workflows.
-            </p>
-            <div className="mt-4">
-              <a href="#" className="text-blue-600 text-sm font-medium hover:text-blue-700">Explore features →</a>
-            </div>
-          </div>
-
-          {/* Deployment Tools */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-blue-600 mb-4">
-              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Deployment Tools</h3>
-            <p className="text-gray-500">
-              Full CI/CD pipeline integration with automated deployments and rollback capabilities.
-            </p>
-            <div className="mt-4">
-              <a href="#" className="text-blue-600 text-sm font-medium hover:text-blue-700">Learn more →</a>
-            </div>
-          </div>
-
-          {/* API Testing */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-blue-600 mb-4">
-              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">API Testing</h3>
-            <p className="text-gray-500">
-              Powerful API testing suite with collections, environments, and automated testing.
-            </p>
-            <div className="mt-4">
-              <a href="#" className="text-blue-600 text-sm font-medium hover:text-blue-700">Try it out →</a>
-            </div>
-          </div>
-
-          {/* Video & Chat */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-blue-600 mb-4">
-              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v8a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Video & Chat</h3>
-            <p className="text-gray-500">
-              Integrated video meetings and team chat with file sharing and threaded conversations.
-            </p>
-            <div className="mt-4">
-              <a href="#" className="text-blue-600 text-sm font-medium hover:text-blue-700">See how it works →</a>
-            </div>
-          </div>
-
-          {/* GitHub Integration */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-blue-600 mb-4">
-              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">GitHub Integration</h3>
-            <p className="text-gray-500">
-              Full GitHub integration with repo management, PR reviews, and deployment triggers.
-            </p>
-            <div className="mt-4">
-              <a href="#" className="text-blue-600 text-sm font-medium hover:text-blue-700">Connect your repos →</a>
-            </div>
-          </div>
-
-          {/* AI Insights */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-blue-600 mb-4">
-              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">AI Insights</h3>
-            <p className="text-gray-500">
-              AI-powered code review, issue suggestions, and automated documentation.
-            </p>
-            <div className="mt-4">
-              <a href="#" className="text-blue-600 text-sm font-medium hover:text-blue-700">See AI in action →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Unified Platform Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
-            <div className="mb-8 lg:mb-0">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">One Platform, Endless Possibilities</h2>
-              <p className="text-lg text-gray-500 mb-6">
-                flexcraft brings together all the tools your team needs to build, deploy, and manage projects without switching between multiple apps.
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <svg className="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Single sign-on with GitHub or custom email</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Unified dashboard for all project activities</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Cross-functional collaboration tools</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="h-5 w-5 text-green-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-700">Enterprise-grade security and compliance</span>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img src={demoImage} alt="Platform screenshot" className="w-full h-auto" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* AI Capabilities Section */}
-      <div className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">AI-Powered Development Insights</h2>
-            <p className="text-lg text-gray-500 max-w-3xl mx-auto">
-              Our AI analyzes your code, issues, and team activity to provide actionable insights and automate repetitive tasks.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="text-blue-600 mb-4">
-                <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Code Review Assistant</h3>
-              <p className="text-gray-500">
-                AI suggests improvements and catches potential issues in pull requests before they're merged.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="text-blue-600 mb-4">
-                <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                  <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Automated Documentation</h3>
-              <p className="text-gray-500">
-                Generates and maintains documentation based on code changes and commit messages.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="text-blue-600 mb-4">
-                <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Predictive Analytics</h3>
-              <p className="text-gray-500">
-                Forecasts project timelines and identifies potential bottlenecks before they occur.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Integration Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Seamless Integrations</h2>
-            <p className="text-lg text-gray-500 max-w-3xl mx-auto">
-              flexcraft works with the tools you already use, connecting your entire workflow.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center">
-              <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" className="h-12" />
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center">
-              <img src="https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg" alt="Slack" className="h-12" />
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center">
-              <img src="https://cdn.worldvectorlogo.com/logos/microsoft-teams.svg" alt="Teams" className="h-12" />
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center">
-              <img src="https://cdn.worldvectorlogo.com/logos/postman.svg" alt="Postman" className="h-12" />
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center">
-              <img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="Jira" className="h-12" />
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center">
-              <img src="https://cdn.worldvectorlogo.com/logos/trello.svg" alt="Trello" className="h-12" />
-            </div>
-          </div>
-          
-          <div className="mt-12 text-center">
-            <a href="#" className="text-blue-600 text-lg font-medium hover:text-blue-700">View all integrations →</a>
-          </div>
-        </div>
-      </div>
-
       {/* Testimonials */}
       <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -963,11 +1080,12 @@ const flexcraftDashboard = () => {
                 </svg>
               </a>
             </div>
-            <p className="text-sm text-gray-400">© 2023 flexcraft. All rights reserved.</p>
+            <p className="text-sm text-gray-400">© 2025 flexcraft. softwares inc. All rights reserved.</p>
           </div>
         </div>
       </footer>
     </div>
+    </>
   );
 };
 

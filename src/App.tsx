@@ -11,9 +11,11 @@ import Integrations from './pages/Integrations';
 import Developers from './pages/Developers';
 import Dashboard from './pages/Dashboard';
 import EmailApp from './pages/Email';
-import Figma from './pages/Figma'
+import Figma from './pages/Figma';
+import Workflow from './pages/Workflow'
+
 function App() {
-  const isAuthenticated = false; // Replace with your actual auth logic
+  const isAuthenticated = true; // Replace with your actual auth logic
 
   return (
     <Router>
@@ -39,9 +41,11 @@ function App() {
                 <Route path="/deployment" element={<ProjectDeployment />} />
                 <Route path="/figma" element={<Figma />} />
                 <Route path="/integrations" element={<Integrations />} />
-                <Route path="/developers-options" element={<Developers />} />
+                <Route path="/developers-docs" element={<Developers />} />
                 <Route path="/" element={<Navigate to="/projects" replace />} />
-                <Route path="*" element={<Navigate to="/projects" replace />} />
+                <Route path="/projects" element={<Navigate to="/projects" replace />} />
+                <Route path="/workflow-automation" element={<Workflow />} />
+
               </>
             )}
           </Routes>
