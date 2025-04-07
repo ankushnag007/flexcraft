@@ -13,9 +13,17 @@ import Dashboard from './pages/Dashboard';
 import EmailApp from './pages/Email';
 import Figma from './pages/Figma';
 import Workflow from './pages/Workflow'
+import FeaturesPage from './pages/Features';
+import Pricing from './pages/Pricing';
+import Resources from './pages/Resources';
+import IntegrationsPage from './pages/Integrations';
+import Documentations from './pages/Documentations';
+import Careers from './pages/Careers'
+
+
 
 function App() {
-  const isAuthenticated = false; // Replace with your actual auth logic
+  const isAuthenticated = false ; // Replace with your actual auth logic
 
   return (
     <Router>
@@ -26,6 +34,17 @@ function App() {
             {!isAuthenticated ? (
               <>
                 <Route path="/" element={<Homepage />} />
+                <Route path="/features" element={<FeaturesPage />} />
+                <Route path="/pricing" element={<Pricing />} />
+                <Route path="/resources" element={<Resources />} />
+                <Route path="/integrationsPage" element={<IntegrationsPage />} />
+                <Route path="/documentations" element={<Documentations />} />
+                <Route path="/careers" element={<Careers />} />
+
+                
+
+
+
                 <Route path="*" element={<Navigate to="/" replace />} />
               </>
             ) : (
@@ -45,6 +64,8 @@ function App() {
                 <Route path="/" element={<Navigate to="/projects" replace />} />
                 <Route path="/projects" element={<Navigate to="/projects" replace />} />
                 <Route path="/workflow-automation" element={<Workflow />} />
+                <Route path="/features" element={<FeaturesPage />} />
+
 
               </>
             )}

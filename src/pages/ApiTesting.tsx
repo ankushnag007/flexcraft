@@ -51,6 +51,56 @@ const ApiTesting = () => {
   const [authType, setAuthType] = useState('bearer');
   const [bearerToken, setBearerToken] = useState('your-token-here');
 
+
+  interface FormDataField {
+    key: string;
+    value: string;
+    type: 'text' | 'file';
+    file?: File;
+  }
+  
+  const [formData, setFormData] = useState<FormDataField[]>([]);
+  const [curlImport, setCurlImport] = useState('');
+  const addFormDataField = () => {
+    setFormData([...formData, { key: '', value: '', type: 'text' }]);
+  };
+  
+  const updateFormData = (index: number, field: 'key' | 'value' | 'type', value: string) => {
+    const newFormData = [...formData];
+    newFormData[index][field] = value;
+    setFormData(newFormData);
+  };
+  
+  const removeFormDataField = (index: number) => {
+    setFormData(formData.filter((_, i) => i !== index));
+  };
+  
+  const handleFileUpload = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const newFormData = [...formData];
+      newFormData[index] = {
+        ...newFormData[index],
+        type: 'file',
+        file: e.target.files[0],
+        value: e.target.files[0].name
+      };
+      setFormData(newFormData);
+    }
+  };
+  
+  const generateCurlCommand = () => {
+    // Implement your cURL generation logic here
+    return 'curl -X GET https://api.example.com';
+  };
+  
+  const copyCurlCommand = () => {
+    navigator.clipboard.writeText(generateCurlCommand());
+  };
+  
+  const importCurl = () => {
+    // Implement your cURL import parsing logic here
+    alert('Importing cURL: ' + curlImport);
+  };
   const handleSend = async () => {
     try {
       const options: RequestInit = {
@@ -364,6 +414,18 @@ const ApiTesting = () => {
               >
                 Auth
               </button>
+              <button
+        className={`px-4 py-2 ${activeTab === 'formdata' ? 'border-b-2 border-blue-500 font-medium' : 'text-gray-500'}`}
+        onClick={() => setActiveTab('formdata')}
+      >
+        Form Data
+      </button>
+      <button
+        className={`px-4 py-2 ${activeTab === 'curl' ? 'border-b-2 border-blue-500 font-medium' : 'text-gray-500'}`}
+        onClick={() => setActiveTab('curl')}
+      >
+        cURL
+      </button>
             </div>
 
             {activeTab === 'params' && (
@@ -588,7 +650,142 @@ const ApiTesting = () => {
                 )}
               </div>
             )}
+
+{activeTab === 'formdata' && (
+      <div>
+        <div className="flex justify-between items-center mb-2">
+          <h3 className="font-medium">Form Data</h3>
+          <div className="flex items-center">
+            <button 
+              className="text-blue-600 text-sm flex items-center"
+              onClick={addFormDataField}
+            >
+              <Plus className="w-4 h-4 mr-1" /> Add Field
+            </button>
           </div>
+        </div>
+        
+        <div className="border rounded-lg overflow-hidden">
+          <table className="w-full">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="px-3 py-2 text-left text-sm font-medium text-gray-500">Key</th>
+                <th className="px-3 py-2 text-left text-sm font-medium text-gray-500">Value</th>
+                <th className="px-3 py-2 text-left text-sm font-medium text-gray-500">Type</th>
+                <th className="px-3 py-2 text-left text-sm font-medium text-gray-500 w-8"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {formData.map((field, index) => (
+                <tr key={index} className="border-t">
+                  <td className="px-3 py-2">
+                    <input
+                      type="text"
+                      value={field.key}
+                      onChange={(e) => updateFormData(index, 'key', e.target.value)}
+                      className="w-full px-2 py-1 border rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                      placeholder="Field name"
+                    />
+                  </td>
+                  <td className="px-3 py-2">
+                    {field.type === 'text' ? (
+                      <input
+                        type="text"
+                        value={field.value}
+                        onChange={(e) => updateFormData(index, 'value', e.target.value)}
+                        className="w-full px-2 py-1 border rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                        placeholder="Field value"
+                      />
+                    ) : (
+                      <div className="flex items-center">
+                        <input
+                          type="file"
+                          onChange={(e) => handleFileUpload(index, e)}
+                          className="w-full px-2 py-1 text-sm"
+                        />
+                      </div>
+                    )}
+                  </td>
+                  <td className="px-3 py-2">
+                    <select
+                      value={field.type}
+                      onChange={(e) => updateFormData(index, 'type', e.target.value)}
+                      className="w-full px-2 py-1 border rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    >
+                      <option value="text">Text</option>
+                      <option value="file">File</option>
+                    </select>
+                  </td>
+                  <td className="px-3 py-2 text-center">
+                    <button 
+                      onClick={() => removeFormDataField(index)}
+                      className="text-gray-500 hover:text-red-500"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )}
+
+    {/* cURL Tab */}
+    {activeTab === 'curl' && (
+      <div>
+        <div className="flex justify-between items-center mb-2">
+          <h3 className="font-medium">cURL Command</h3>
+          <div className="flex items-center">
+            <button 
+              className="text-blue-600 text-sm flex items-center"
+              onClick={copyCurlCommand}
+            >
+              <Copy className="w-4 h-4 mr-1" /> Copy
+            </button>
+          </div>
+        </div>
+        
+        <div className="relative">
+          <div className="absolute top-2 right-2">
+            <button 
+              className="p-1 bg-gray-200 rounded hover:bg-gray-300"
+              onClick={copyCurlCommand}
+              title="Copy to clipboard"
+            >
+              <Copy className="w-4 h-4" />
+            </button>
+          </div>
+          <pre className="bg-gray-100 p-4 rounded-lg border overflow-x-auto text-sm font-mono whitespace-pre-wrap">
+            {generateCurlCommand() || (
+              <div className="text-gray-400">Configure your request to generate cURL command</div>
+            )}
+          </pre>
+        </div>
+        
+        <div className="mt-4">
+          <h4 className="text-sm font-medium mb-2">Import cURL</h4>
+          <div className="flex">
+            <textarea
+              value={curlImport}
+              onChange={(e) => setCurlImport(e.target.value)}
+              className="flex-1 p-3 border rounded-l-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Paste cURL command here"
+              rows={3}
+            />
+            <button
+              onClick={importCurl}
+              className="px-4 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              Import
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+          </div>
+          
 
           {/* Response */}
           <div className="w-1/2 border-l p-4 overflow-y-auto bg-gray-50">

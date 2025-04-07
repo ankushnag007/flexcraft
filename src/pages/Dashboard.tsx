@@ -8,11 +8,15 @@ import {
   Code2, 
    
    
-  FileText 
+  FileText, 
+  Video,
+  CalendarSearch
 } from 'lucide-react';
 import  logo from  '../Assets/videos/images/logo.png';
 import  user from  '../Assets/videos/images/user.jpg';
-
+import Meetings from './Meetings'
+import Reports from './Reports'
+import Projects from './Projects';
 const FlexCraftDashboard = () => {
   const [timeOfDay, setTimeOfDay] = useState('morning');
   const [currentTime, setCurrentTime] = useState('');
@@ -79,7 +83,7 @@ const FlexCraftDashboard = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [activePlan, setActivePlan] = useState('pro');
   const [showVideoModal, setShowVideoModal] = useState(false);
-  const [activeTab, setActiveTab] = useState('projects');
+  const [activeTab, setActiveTab] = useState('profile');
   const [teamMembers, setTeamMembers] = useState([]);
   const [invitations, setInvitations] = useState([]);
   const [roles, setRoles] = useState([]);
@@ -687,6 +691,14 @@ const FlexCraftDashboard = () => {
                   <img src={logo} className="h-6 w-auto" /> {/* Adjusted height and width */}
                 
                   <nav className="flex space-x-8">
+                  <a
+    href="#"
+    className={`flex items-center space-x-1.5 ${activeTab === 'profile' ? 'text-blue-600' : 'text-gray-500'} hover:text-gray-700 transition-colors`}
+    onClick={() => setActiveTab('profile')}
+  >
+    <Folder className="h-4 w-4" />
+    <span>Profile</span>
+  </a>
   <a
     href="#"
     className={`flex items-center space-x-1.5 ${activeTab === 'projects' ? 'text-blue-600' : 'text-gray-500'} hover:text-gray-700 transition-colors`}
@@ -727,6 +739,15 @@ const FlexCraftDashboard = () => {
     <FileText className="h-4 w-4" />
     <span>Reports</span>
   </a>
+  <a
+    href="#"
+    className={`flex items-center space-x-1.5 ${activeTab === 'meetings' ? 'text-blue-600' : 'text-gray-500'} hover:text-gray-700 transition-colors`}
+    onClick={() => setActiveTab('meetings')}
+  >
+    <Video className="h-4 w-4" />
+    <CalendarSearch className="h-4 w-4" />
+    <span>Schedule meetigs</span>
+  </a>
 </nav>
               </div>
             </div>
@@ -753,7 +774,182 @@ const FlexCraftDashboard = () => {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {activeTab === 'team' ? (
+      {activeTab === 'profile' && (
+           <div className="space-y-8">
+           {/* Dashboard Header */}
+           <div className={`${styles.bg} p-6 rounded-xl shadow-sm`}>
+       <div className="flex justify-between items-center">
+         <div className="flex items-center space-x-4">
+          
+             <img src={user} className='h-24 w-24 rounded-full'/>
+ 
+           <div>
+             <h1 className={`text-2xl font-bold ${styles.text}`}>Hello, Alex</h1>
+             {/* <img src={logo} className='h-24 w-24 rounded'/> */}
+             <div className="flex items-center space-x-2">
+             <div className={`p-3 rounded-full ${styles.bg} shadow-inner`}>
+             {styles.icon}
+           </div>
+               <p className={`font-medium ${styles.text}`}>{styles.greeting}</p>
+               <span className="text-sm text-gray-500">• {currentTime}</span>
+             </div>
+           </div>
+         </div>
+         
+         <div className="flex space-x-3">
+           <button className={`flex items-center px-4 py-2 rounded-lg transition-all 
+             ${timeOfDay === 'morning' ? 'bg-amber-500 hover:bg-amber-600' : 
+               timeOfDay === 'afternoon' ? 'bg-sky-500 hover:bg-sky-600' : 
+               'bg-indigo-500 hover:bg-indigo-600'} 
+             text-white shadow-md hover:shadow-lg`}>
+             <Zap className="h-4 w-4 mr-2" />
+             Quick Action
+           </button>
+           
+           <button className={`flex items-center px-3 py-2 rounded-lg transition-all 
+             ${timeOfDay === 'morning' ? 'bg-amber-100 hover:bg-amber-200 text-amber-700' : 
+               timeOfDay === 'afternoon' ? 'bg-sky-100 hover:bg-sky-200 text-sky-700' : 
+               'bg-indigo-100 hover:bg-indigo-200 text-indigo-700'}`}>
+             <Plus className="h-4 w-4 mr-1" />
+             New
+           </button>
+         </div>
+       </div>
+     </div>
+ 
+           {/* Usage Metrics */}
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+             {usageMetrics.map((metric, index) => (
+               <div key={index} className="bg-white rounded-lg shadow-sm p-6">
+                 <div className="flex items-center justify-between">
+                   <div>
+                     <p className="text-sm text-gray-500">{metric.name}</p>
+                     <p className="text-2xl font-bold mt-1">{metric.value}</p>
+                     <p className="text-xs text-gray-400 mt-1">Limit: {metric.limit}</p>
+                   </div>
+                   <div className={`p-3 rounded-full ${metric.color} bg-opacity-20`}>
+                     <metric.icon className="h-6 w-6" />
+                   </div>
+                 </div>
+               </div>
+             ))}
+           </div>
+ 
+           {/* Current Plan */}
+           <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+             <div className="p-6">
+               <h2 className="text-lg font-semibold mb-4">Your Current Plan</h2>
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                 {plans.map(plan => (
+                   <div 
+                     key={plan.id} 
+                     className={`border rounded-lg p-6 relative ${plan.id === activePlan ? 'border-blue-500 ring-2 ring-blue-200' : 'border-gray-200'}`}
+                   >
+                     {plan.popular && (
+                       <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg">
+                         Popular
+                       </div>
+                     )}
+                     <h3 className="text-lg font-bold">{plan.name}</h3>
+                     <div className="mt-2">
+                       <span className="text-3xl font-bold">{plan.price}</span>
+                       {plan.period && <span className="text-gray-500">{plan.period}</span>}
+                     </div>
+                     <p className="text-gray-500 mt-2">{plan.description}</p>
+                     <ul className="mt-4 space-y-2">
+                       {plan.features.map((feature, i) => (
+                         <li key={i} className="flex items-center">
+                           <Check className="h-4 w-4 text-green-500 mr-2" />
+                           <span className="text-sm">{feature}</span>
+                         </li>
+                       ))}
+                     </ul>
+                     <button
+                       className={`mt-6 w-full px-4 py-2 rounded-lg ${plan.id === activePlan ? 'bg-blue-600 text-white hover:bg-blue-700' : 'border border-gray-300 hover:bg-gray-50'}`}
+                     >
+                       {plan.id === activePlan ? 'Current Plan' : plan.cta}
+                     </button>
+                   </div>
+                 ))}
+               </div>
+             </div>
+           </div>
+ 
+           {/* Recent Activity */}
+           <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+             <div className="p-6 border-b">
+               <h2 className="text-lg font-semibold">Recent Activity</h2>
+             </div>
+             <div className="divide-y">
+               {[1, 2, 3, 4, 5].map((item, index) => (
+                 <div key={index} className="p-4 hover:bg-gray-50">
+                   <div className="flex items-center space-x-4">
+                     <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500">
+                       <UserCheck className="h-5 w-5" />
+                     </div>
+                     <div className="flex-1">
+                       <p className="font-medium">Activity {index + 1}</p>
+                       <p className="text-sm text-gray-500">Description of activity</p>
+                     </div>
+                     <div className="text-sm text-gray-400">
+                       {new Date().toLocaleTimeString()}
+                     </div>
+                   </div>
+                 </div>
+               ))}
+             </div>
+           </div>
+ 
+           {/* Video Tutorial */}
+           <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+             <div className="p-6 border-b">
+               <div className="flex justify-between items-center">
+                 <h2 className="text-lg font-semibold">Getting Started</h2>
+                 <button 
+                   className="text-blue-600 hover:text-blue-800 text-sm"
+                   onClick={() => setShowVideoModal(true)}
+                 >
+                   View All Tutorials
+                 </button>
+               </div>
+             </div>
+             <div className="p-6">
+               <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg relative">
+                 <button 
+                   className="absolute inset-0 flex items-center justify-center"
+                   onClick={() => setIsPlaying(!isPlaying)}
+                 >
+                   {isPlaying ? (
+                     <Pause className="h-12 w-12 text-white bg-black bg-opacity-50 rounded-full p-3" />
+                   ) : (
+                     <Play className="h-12 w-12 text-white bg-black bg-opacity-50 rounded-full p-3" />
+                   )}
+                 </button>
+                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center">
+                   <button 
+                     className="text-white hover:text-gray-200"
+                     onClick={() => setIsMuted(!isMuted)}
+                   >
+                     {isMuted ? (
+                       <VolumeX className="h-5 w-5" />
+                     ) : (
+                       <Volume2 className="h-5 w-5" />
+                     )}
+                   </button>
+                   <button className="text-white hover:text-gray-200">
+                     <Maximize className="h-5 w-5" />
+                   </button>
+                 </div>
+               </div>
+               <div className="mt-4">
+                 <h3 className="font-medium">Introduction to FlexCraft</h3>
+                 <p className="text-sm text-gray-500 mt-1">Learn how to get started with our platform</p>
+               </div>
+             </div>
+           </div>
+         </div>
+        ) }
+        {activeTab === 'team' && (
           <div className="space-y-8">
             {/* Team Management Header */}
             <div className="flex justify-between items-center">
@@ -1074,181 +1270,18 @@ const FlexCraftDashboard = () => {
               </div>
             </div>
           </div>
-        ) : (
-          <div className="space-y-8">
-          {/* Dashboard Header */}
-          <div className={`${styles.bg} p-6 rounded-xl shadow-sm`}>
-      <div className="flex justify-between items-center">
-        <div className="flex items-center space-x-4">
-         
-            <img src={user} className='h-24 w-24 rounded-full'/>
-
-          <div>
-            <h1 className={`text-2xl font-bold ${styles.text}`}>Hello, Alex</h1>
-            {/* <img src={logo} className='h-24 w-24 rounded'/> */}
-            <div className="flex items-center space-x-2">
-            <div className={`p-3 rounded-full ${styles.bg} shadow-inner`}>
-            {styles.icon}
-          </div>
-              <p className={`font-medium ${styles.text}`}>{styles.greeting}</p>
-              <span className="text-sm text-gray-500">• {currentTime}</span>
-            </div>
-          </div>
-        </div>
-        
-        <div className="flex space-x-3">
-          <button className={`flex items-center px-4 py-2 rounded-lg transition-all 
-            ${timeOfDay === 'morning' ? 'bg-amber-500 hover:bg-amber-600' : 
-              timeOfDay === 'afternoon' ? 'bg-sky-500 hover:bg-sky-600' : 
-              'bg-indigo-500 hover:bg-indigo-600'} 
-            text-white shadow-md hover:shadow-lg`}>
-            <Zap className="h-4 w-4 mr-2" />
-            Quick Action
-          </button>
-          
-          <button className={`flex items-center px-3 py-2 rounded-lg transition-all 
-            ${timeOfDay === 'morning' ? 'bg-amber-100 hover:bg-amber-200 text-amber-700' : 
-              timeOfDay === 'afternoon' ? 'bg-sky-100 hover:bg-sky-200 text-sky-700' : 
-              'bg-indigo-100 hover:bg-indigo-200 text-indigo-700'}`}>
-            <Plus className="h-4 w-4 mr-1" />
-            New
-          </button>
-        </div>
-      </div>
-    </div>
-
-          {/* Usage Metrics */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {usageMetrics.map((metric, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-sm p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-gray-500">{metric.name}</p>
-                    <p className="text-2xl font-bold mt-1">{metric.value}</p>
-                    <p className="text-xs text-gray-400 mt-1">Limit: {metric.limit}</p>
-                  </div>
-                  <div className={`p-3 rounded-full ${metric.color} bg-opacity-20`}>
-                    <metric.icon className="h-6 w-6" />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Current Plan */}
-          <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-            <div className="p-6">
-              <h2 className="text-lg font-semibold mb-4">Your Current Plan</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {plans.map(plan => (
-                  <div 
-                    key={plan.id} 
-                    className={`border rounded-lg p-6 relative ${plan.id === activePlan ? 'border-blue-500 ring-2 ring-blue-200' : 'border-gray-200'}`}
-                  >
-                    {plan.popular && (
-                      <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg">
-                        Popular
-                      </div>
-                    )}
-                    <h3 className="text-lg font-bold">{plan.name}</h3>
-                    <div className="mt-2">
-                      <span className="text-3xl font-bold">{plan.price}</span>
-                      {plan.period && <span className="text-gray-500">{plan.period}</span>}
-                    </div>
-                    <p className="text-gray-500 mt-2">{plan.description}</p>
-                    <ul className="mt-4 space-y-2">
-                      {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-center">
-                          <Check className="h-4 w-4 text-green-500 mr-2" />
-                          <span className="text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <button
-                      className={`mt-6 w-full px-4 py-2 rounded-lg ${plan.id === activePlan ? 'bg-blue-600 text-white hover:bg-blue-700' : 'border border-gray-300 hover:bg-gray-50'}`}
-                    >
-                      {plan.id === activePlan ? 'Current Plan' : plan.cta}
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Recent Activity */}
-          <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-            <div className="p-6 border-b">
-              <h2 className="text-lg font-semibold">Recent Activity</h2>
-            </div>
-            <div className="divide-y">
-              {[1, 2, 3, 4, 5].map((item, index) => (
-                <div key={index} className="p-4 hover:bg-gray-50">
-                  <div className="flex items-center space-x-4">
-                    <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500">
-                      <UserCheck className="h-5 w-5" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-medium">Activity {index + 1}</p>
-                      <p className="text-sm text-gray-500">Description of activity</p>
-                    </div>
-                    <div className="text-sm text-gray-400">
-                      {new Date().toLocaleTimeString()}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Video Tutorial */}
-          <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-            <div className="p-6 border-b">
-              <div className="flex justify-between items-center">
-                <h2 className="text-lg font-semibold">Getting Started</h2>
-                <button 
-                  className="text-blue-600 hover:text-blue-800 text-sm"
-                  onClick={() => setShowVideoModal(true)}
-                >
-                  View All Tutorials
-                </button>
-              </div>
-            </div>
-            <div className="p-6">
-              <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg relative">
-                <button 
-                  className="absolute inset-0 flex items-center justify-center"
-                  onClick={() => setIsPlaying(!isPlaying)}
-                >
-                  {isPlaying ? (
-                    <Pause className="h-12 w-12 text-white bg-black bg-opacity-50 rounded-full p-3" />
-                  ) : (
-                    <Play className="h-12 w-12 text-white bg-black bg-opacity-50 rounded-full p-3" />
-                  )}
-                </button>
-                <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center">
-                  <button 
-                    className="text-white hover:text-gray-200"
-                    onClick={() => setIsMuted(!isMuted)}
-                  >
-                    {isMuted ? (
-                      <VolumeX className="h-5 w-5" />
-                    ) : (
-                      <Volume2 className="h-5 w-5" />
-                    )}
-                  </button>
-                  <button className="text-white hover:text-gray-200">
-                    <Maximize className="h-5 w-5" />
-                  </button>
-                </div>
-              </div>
-              <div className="mt-4">
-                <h3 className="font-medium">Introduction to FlexCraft</h3>
-                <p className="text-sm text-gray-500 mt-1">Learn how to get started with our platform</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        )}
+        ) }
+        {
+          activeTab === 'meetings' && (
+            <div><Meetings /></div>
+          )
+        }
+          {activeTab === 'reports' && (
+         <Reports />
+        ) }
+             {activeTab === 'projects' && (
+         <Projects />
+        ) }
       </div>
 
       {/* Modals */}

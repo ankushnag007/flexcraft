@@ -70,10 +70,12 @@ const flexcraftDashboard = () => {
           <div className="flex items-center">
             <img src={logo} className='h-4 w-full'/>
             <nav className="ml-10 space-x-8">
-              <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Features</a>
-              <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Pricing</a>
-              <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Resources</a>
-              <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Integrations</a>
+              <a href="/features" className="text-sm font-medium text-gray-500 hover:text-gray-900">Features</a>
+              <a href="pricing" className="text-sm font-medium text-gray-500 hover:text-gray-900">Pricing</a>
+              <a href="/resources" className="text-sm font-medium text-gray-500 hover:text-gray-900">Resources</a>
+              <a href="/integrationsPage" className="text-sm font-medium text-gray-500 hover:text-gray-900">Integrations</a>
+             
+              <a href="/careers" className="text-sm font-medium text-gray-500 hover:text-gray-900">Careers</a>
             </nav>
           </div>
           <div className="flex items-center space-x-4">
@@ -403,7 +405,7 @@ const flexcraftDashboard = () => {
             All-in-one solution for project management, deployment, API testing, team collaboration, and AI-powered insights.
           </p>
           <div className="mt-10 flex justify-center space-x-4">
-            <a href="#" className="px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-blue-50 md:py-4 md:text-lg md:px-10">
+            <a href="https://calendly.com/ankushnag786/30min" className="px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-blue-50 md:py-4 md:text-lg md:px-10">
               Get started for free
             </a>
             <a href="#" className="px-8 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-blue-700 md:py-4 md:text-lg md:px-10">
@@ -1011,7 +1013,7 @@ const flexcraftDashboard = () => {
             <a href="#" className="px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-blue-50 md:py-4 md:text-lg md:px-10">
               Start free trial
             </a>
-            <a href="#" className="px-8 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-blue-700 md:py-4 md:text-lg md:px-10">
+            <a href="https://calendly.com/ankushnag786/30min" className="px-8 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-blue-700 md:py-4 md:text-lg md:px-10">
               Request demo
             </a>
           </div>
@@ -1025,16 +1027,18 @@ const flexcraftDashboard = () => {
             <div>
               <h3 className="text-sm font-semibold tracking-wider uppercase mb-4">Product</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-sm text-gray-300 hover:text-white">Features</a></li>
+                <li><a href="/features" className="text-sm text-gray-300 hover:text-white">Features</a></li>
                 <li><a href="#" className="text-sm text-gray-300 hover:text-white">Pricing</a></li>
                 <li><a href="#" className="text-sm text-gray-300 hover:text-white">Integrations</a></li>
-                <li><a href="#" className="text-sm text-gray-300 hover:text-white">Roadmap</a></li>
+                <li><a href="/integrations" className="text-sm text-gray-300 hover:text-white">Roadmap</a></li>
+                <li><a href="#" className="text-sm text-gray-300 hover:text-white">Integrations</a></li>
+                <li><a href="/careers" className="text-sm text-gray-300 hover:text-white">Roadmap</a></li>
               </ul>
             </div>
             <div>
               <h3 className="text-sm font-semibold tracking-wider uppercase mb-4">Resources</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-sm text-gray-300 hover:text-white">Documentation</a></li>
+                <li><a href="/documentations" className="text-sm text-gray-300 hover:text-white">Documentationss</a></li>
                 <li><a href="#" className="text-sm text-gray-300 hover:text-white">API Reference</a></li>
                 <li><a href="#" className="text-sm text-gray-300 hover:text-white">Community</a></li>
                 <li><a href="#" className="text-sm text-gray-300 hover:text-white">Blog</a></li>
