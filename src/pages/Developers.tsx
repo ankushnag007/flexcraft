@@ -92,7 +92,6 @@ const DeveloperOptions = () => {
     <div className="max-w-7xl mx-auto px-4 py-8">
       <div className="mb-8">
       <div className="flex items-center gap-2">
-  <img src={logo} className="h-5 w-auto" /> {/* Slightly increased height for better balance */}
   <h1 className="text-xl font-semibold whitespace-nowrap">Developer Options</h1>
 </div>
      

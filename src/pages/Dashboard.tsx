@@ -688,7 +688,7 @@ const FlexCraftDashboard = () => {
             <div className="flex items-center">
               
               <div className="hidden md:ml-10 md:flex md:space-x-8">
-                  <img src={logo} className="h-6 w-auto" /> {/* Adjusted height and width */}
+                 
                 
                   <nav className="flex space-x-8">
                   <a
@@ -953,7 +953,7 @@ const FlexCraftDashboard = () => {
           <div className="space-y-8">
             {/* Team Management Header */}
             <div className="flex justify-between items-center">
-              <h1 className="text-2xl font-bold">Team Management</h1>
+              <h1 className="text-xl font-bold text-blue-500">Team Management</h1>
               <div className="flex space-x-3">
                 <button 
                   onClick={() => setShowInviteModal(true)}

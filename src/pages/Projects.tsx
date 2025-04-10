@@ -147,8 +147,8 @@ const ProjectsDashboard = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-800">Project Portfolio</h1>
-            <p className="text-gray-600">Manage and track all your active projects</p>
+            <h1 className="text-xl font-bold text-blue-500">Project Portfolio</h1>
+            <p className="text-gray-600 text-sm">Manage and track all your active projects</p>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
@@ -165,7 +165,7 @@ const ProjectsDashboard = () => {
               />
             </div>
             
-            <div className="flex items-center space-x-2 bg-white border rounded-md p-1">
+            <div className="flex items-center space-x-2 bg-white border rounded-md ">
               <button
                 onClick={() => setViewMode('grid')}
                 className={`p-2 rounded ${viewMode === 'grid' ? 'bg-blue-100 text-blue-600' : 'text-gray-600'}`}
@@ -198,7 +198,7 @@ const ProjectsDashboard = () => {
               </select>
             </div>
             
-            <button className="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <button className="flex items-center justify-center px-4 py-2 rounded-md shadow-sm text-sm font-medium text-white bg-white hover:bg-blue-700 text-black hover:text-white animate-pulse ">
               <Plus className="w-5 h-5 mr-2" />
               New Project
             </button>

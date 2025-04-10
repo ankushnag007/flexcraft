@@ -181,7 +181,6 @@ const GitHubIntegration = () => {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
       <div className="flex items-center gap-2">
-  <img src={logo} className="h-6 w-auto" /> {/* Adjusted height and width */}
   <h1 className="text-2xl font-bold">GitHub Integration</h1>
 </div>
         <div className="flex space-x-3">

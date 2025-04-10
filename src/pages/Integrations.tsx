@@ -118,7 +118,6 @@ const IntegrationsPage = () => {
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* Header */}
       <div className="flex items-baseline gap-3">  {/* Changed to items-baseline */}
-  <img src={logo} className="h-6 w-auto self-center" />  {/* Added self-center */}
   <h1 className="text-3xl font-bold">Integrations</h1>
 </div>
       <div className="mt-3 mb-4">

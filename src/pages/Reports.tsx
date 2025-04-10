@@ -212,8 +212,8 @@ const EmployeePerformanceReport = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Performance Dashboard</h1>
-            <p className="text-gray-600">John Doe • Senior Software Engineer</p>
+            <h1 className="text-xl md:txl font-bold text-blue-500">Performance Dashboard</h1>
+            <p className="text-gray-600 text-sm">John Doe • Senior Software Engineer</p>
           </div>
           
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
@@ -333,7 +333,7 @@ const EmployeePerformanceReport = () => {
           <div className="space-y-6">
             {/* Overall Performance Card */}
             <div className="bg-white rounded-xl shadow-sm border p-6">
-              <h2 className="text-xl font-semibold mb-6">Overall Performance</h2>
+              <h2 className="text-xl font-bold  text-blue-500 mb-6">Overall Performance</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Overall Score */}
                 <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-5">
@@ -448,7 +448,7 @@ const EmployeePerformanceReport = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Projects Overview */}
               <div className="bg-white rounded-xl shadow-sm border p-6">
-                <h2 className="text-xl font-semibold mb-4">Projects Overview</h2>
+                <h2 className="text-xl font-semibold mb-4 text-blue-500">Projects Overview</h2>
                 <div className="space-y-4">
                   {performanceData.projects.map((project) => (
                     <div key={project.id} className="border-b pb-4 last:border-b-0 last:pb-0">
@@ -496,7 +496,7 @@ const EmployeePerformanceReport = () => {
 
               {/* Tasks Overview */}
               <div className="bg-white rounded-xl shadow-sm border p-6">
-                <h2 className="text-xl font-semibold mb-4">Tasks Overview</h2>
+                <h2 className="text-xl font-semibold text-blue-500 mb-4">Tasks Overview</h2>
                 <div className="space-y-4">
                   {performanceData.tasks.map((task) => (
                     <div key={task.id} className="border-b pb-4 last:border-b-0 last:pb-0">

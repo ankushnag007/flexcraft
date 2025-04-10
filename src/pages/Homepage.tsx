@@ -8,7 +8,7 @@ import logo from '../Assets/videos/images/logo.png'
 import logo2 from '../Assets/videos/images/giflogo.gif'
 
 import ImageWithLoader from '../components/AppLoader';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Menu, MenuIcon, X, XCircle } from 'lucide-react';
 
 const flexcraftDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,6 +29,11 @@ const flexcraftDashboard = () => {
   const [name, setName] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [activeTab, setActiveTab] = useState('login'); // 'login' or 'signup'
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -66,34 +71,78 @@ const flexcraftDashboard = () => {
       {/* Header */}
      
       <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center">
-            <img src={logo} className='h-4 w-full'/>
-            <nav className="ml-10 space-x-8">
-              <a href="/features" className="text-sm font-medium text-gray-500 hover:text-gray-900">Features</a>
-              <a href="pricing" className="text-sm font-medium text-gray-500 hover:text-gray-900">Pricing</a>
-              <a href="/resources" className="text-sm font-medium text-gray-500 hover:text-gray-900">Resources</a>
-              <a href="/integrationsPage" className="text-sm font-medium text-gray-500 hover:text-gray-900">Integrations</a>
-             
-              <a href="/careers" className="text-sm font-medium text-gray-500 hover:text-gray-900">Careers</a>
-            </nav>
+      <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div className="flex items-center">
+          <img src={logo} className="h-4 w-full" alt="Logo" />
+          
+          {/* Desktop Navigation (hidden on mobile) */}
+          <nav className="hidden md:ml-10 md:space-x-8 md:flex">
+            <a href="/features" className="text-sm font-medium text-gray-500 hover:text-gray-900">Features</a>
+            <a href="/pricing" className="text-sm font-medium text-gray-500 hover:text-gray-900">Pricing</a>
+            <a href="/resources" className="text-sm font-medium text-gray-500 hover:text-gray-900">Resources</a>
+            <a href="/integrationsPage" className="text-sm font-medium text-gray-500 hover:text-gray-900">Integrations</a>
+            <a href="/careers" className="text-sm font-medium text-gray-500 hover:text-gray-900">Careers</a>
+          </nav>
+        </div>
+
+        {/* Desktop Buttons (hidden on mobile) */}
+        <div className="hidden md:flex items-center space-x-4">
+          <button 
+            onClick={() => setShowLoginModal(true)}
+            className="text-sm font-medium text-gray-500 hover:text-gray-900"
+          >
+            Log in
+          </button>
+          <button 
+            onClick={() => setShowSignupModal(true)}
+            className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700"
+          >
+            Sign up
+          </button>
+        </div>
+
+        {/* Mobile Hamburger Button (visible only on mobile) */}
+        <button 
+          onClick={toggleMenu}
+          className="md:hidden p-2 text-gray-500 hover:text-gray-900 rounded-md"
+        >
+          {isMenuOpen ? <XCircle className="w-5 h-5" /> : <MenuIcon className="w-5 h-5" />}
+        </button>
+      </div>
+
+      {/* Mobile Menu (visible when hamburger is clicked) */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white px-4 pb-4">
+          <div className="flex flex-col space-y-3">
+            <a href="/features" className="text-sm font-medium text-gray-500 hover:text-gray-900 py-2">Features</a>
+            <a href="/pricing" className="text-sm font-medium text-gray-500 hover:text-gray-900 py-2">Pricing</a>
+            <a href="/resources" className="text-sm font-medium text-gray-500 hover:text-gray-900 py-2">Resources</a>
+            <a href="/integrationsPage" className="text-sm font-medium text-gray-500 hover:text-gray-900 py-2">Integrations</a>
+            <a href="/careers" className="text-sm font-medium text-gray-500 hover:text-gray-900 py-2">Careers</a>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-col space-y-3 mt-4 pt-4 border-t border-gray-200">
             <button 
-              onClick={() => setShowLoginModal(true)}
-              className="text-sm font-medium text-gray-500 hover:text-gray-900"
+              onClick={() => {
+                setShowLoginModal(true);
+                setIsMenuOpen(false);
+              }}
+              className="text-sm font-medium text-gray-500 hover:text-gray-900 py-2 text-left"
             >
               Log in
             </button>
             <button 
-              onClick={() => setShowSignupModal(true)}
-              className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700"
+              onClick={() => {
+                setShowSignupModal(true);
+                setIsMenuOpen(false);
+              }}
+              className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 text-center"
             >
               Sign up
             </button>
           </div>
         </div>
-      </header>
+      )}
+    </header>
 
       {/* Login Modal */}
       {showLoginModal && (
