@@ -2,13 +2,15 @@ import React,{useEffect, useState} from 'react';
 import video from '../Assets/videos/motiongraphic.mp4';
 import video2 from '../Assets/videos/motiongraphic2.mp4';
 import video3 from '../Assets/videos/motiongraphic3.mp4';
-
+import axios from 'axios';
 import demoImage from '../Assets/videos/images/demoimage.png'
 import logo from '../Assets/videos/images/logo.png'
 import logo2 from '../Assets/videos/images/giflogo.gif'
+import Google from '../Assets/videos/images/google.svg'
+
 
 import ImageWithLoader from '../components/AppLoader';
-import { Loader2, Menu, MenuIcon, X, XCircle } from 'lucide-react';
+import { GalleryThumbnails, Loader2, Menu, MenuIcon, X, XCircle } from 'lucide-react';
 
 const flexcraftDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -269,9 +271,7 @@ const flexcraftDashboard = () => {
                         className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                       >
                         <span className="sr-only">Sign in with Google</span>
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                          <path d="M10 2a8 8 0 018 8c0 3.866-3.134 7-7 7a7 7 0 01-6.99-7C4 6.134 7.134 3 11 3c1.93 0 3.68.784 4.95 2.05l-1.41 1.41A5.002 5.002 0 0011 5a5 5 0 00-5 5 5 5 0 005 5c2.757 0 5-2.243 5-5v-1h-8v2h6.93A6.002 6.002 0 0110 16a6 6 0 01-6-6 6 6 0 016-6c1.595 0 3.035.686 4.05 1.78l1.41-1.41A8 8 0 0010 2z" />
-                        </svg>
+                     <img src={Google} className='h-5 w-auto'/>
                       </a>
                     </div>
                   </div>
@@ -315,6 +315,7 @@ const flexcraftDashboard = () => {
                   </div>
                 </div>
               </div>
+              {/* signup tan */}
               <div className="mt-5">
                 <form onSubmit={handleSignupSubmit}>
                   <div>
@@ -431,9 +432,7 @@ const flexcraftDashboard = () => {
                         className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                       >
                         <span className="sr-only">Sign up with Google</span>
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                          <path d="M10 2a8 8 0 018 8c0 3.866-3.134 7-7 7a7 7 0 01-6.99-7C4 6.134 7.134 3 11 3c1.93 0 3.68.784 4.95 2.05l-1.41 1.41A5.002 5.002 0 0011 5a5 5 0 00-5 5 5 5 0 005 5c2.757 0 5-2.243 5-5v-1h-8v2h6.93A6.002 6.002 0 0110 16a6 6 0 01-6-6 6 6 0 016-6c1.595 0 3.035.686 4.05 1.78l1.41-1.41A8 8 0 0010 2z" />
-                        </svg>
+                        <img src={Google} className='h-5 w-auto'/>
                       </a>
                     </div>
                   </div>

@@ -31,8 +31,8 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-10 w-full">
-      <div className="w-full px-4">
+    <header className="bg-white shadow-sm sticky top-0 z-10 w-full ">
+      <div className="w-full px-4 ">
         <div className="flex items-center justify-between h-16 w-full">
           {/* Left-aligned navigation items */}
           <div className="flex items-center overflow-hidden whitespace-nowrap">
