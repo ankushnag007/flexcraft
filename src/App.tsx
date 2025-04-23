@@ -23,7 +23,7 @@ import Careers from './pages/Careers'
 
 
 function App() {
-  const isAuthenticated = false ; // Replace with your actual auth logic
+  const isAuthenticated = true ; // Replace with your actual auth logic
 
   return (
     <Router>
