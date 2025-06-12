@@ -1,126 +1,345 @@
-{
-  "subject": "Seed Investment Opportunity in Flexcraft – AI-Powered Project Management Platform",
-  "recipient": "Zerodha / Rainmatter Team",
-  "greeting": "Dear Zerodha / Rainmatter Team,\n\nI hope you're doing well.",
-  "intro": "I’m reaching out to introduce Flexcraft, a powerful AI-enabled project management and deployment platform designed to transform how modern teams build, collaborate, and ship software. With the product already 20% developed, we're raising our seed round of $1M at an ₹8.5 Cr valuation to fuel development and bring Flexcraft to market.",
-  "why_flexcraft": {
-    "title": "🚀 Why Flexcraft?",
-    "points": [
-      "Automate project planning & timelines",
-      "Provide smart engineer-task matching",
-      "Optimize team efficiency through intelligent sprint suggestions",
-      "Offer real-time insights for delivery accountability"
-    ]
-  },
-  "funding_reason": {
-    "title": "💸 Why We’re Raising",
-    "points": [
-      "Scale our engineering, design, and GTM teams",
-      "Finalize our MVP for broader pilot testing",
-      "Invest in cloud infra to support initial customers"
-    ]
-  },
-  "financials": {
-    "valuation": "₹8.5 Cr",
-    "seed_investment_usd": 1000000,
-    "years": [
-      {
-        "year": 1,
-        "stage": "Launch Phase",
-        "users": 40000,
-        "revenue": 407592000,
-        "expenses": 35100000,
-        "net": 392419200
-      },
-      {
-        "year": 2,
-        "stage": "Growth Phase",
-        "users": 4000000,
-        "revenue": 4075920000,
-        "expenses": 266400000,
-        "net": 3809520000
-      },
-      {
-        "year": 3,
-        "stage": "Scale Phase",
-        "users": 40000000,
-        "revenue": 40759200000,
-        "expenses": 20156500000,
-        "net": 20602700000
-      }
-    ]
-  },
-  "yearly_breakdown": {
-    "year_1": {
-      "expenses": {
-        "engineers": 7500000,
-        "marketing": 2800000,
-        "sales": 2800000,
-        "advertising": 500000,
-        "designers": 1500000,
-        "server_cost": 20000000,
-        "total": 35100000
-      },
-      "revenue": {
-        "users": 40000,
-        "user_fee_usd": 9.99,
-        "total_usd": 399600,
-        "conversion_rate": 85,
-        "total_inr": 33966000,
-        "annual_revenue": 407592000
-      },
-      "savings": 392419200
-    },
-    "year_2": {
-      "expenses": {
-        "engineers": 22500000,
-        "marketing": 10000000,
-        "sales": 10000000,
-        "advertising": 15500000,
-        "designers": 8400000,
-        "server_cost": 200000000,
-        "total": 266400000
-      },
-      "revenue": {
-        "users": 4000000,
-        "user_fee_usd": 9.99,
-        "total_usd": 39960000,
-        "conversion_rate": 85,
-        "total_inr": 3396600000,
-        "annual_revenue": 4075920000
-      },
-      "savings": 3809520000
-    },
-    "year_3": {
-      "expenses": {
-        "engineers": 60000000,
-        "marketing": 22500000,
-        "sales": 15000000,
-        "advertising": 50000000,
-        "designers": 9000000,
-        "server_cost": 20000000000,
-        "total": 20156500000
-      },
-      "revenue": {
-        "users": 40000000,
-        "user_fee_usd": 9.99,
-        "total_usd": 399600000,
-        "conversion_rate": 85,
-        "total_inr": 33966000000,
-        "annual_revenue": 40759200000
-      },
-      "savings": 20602700000
-    }
-  },
-  "closing": {
-    "message": "We’re building Flexcraft with long-term capital efficiency, strong technical roots, and AI-first differentiation — a vision we believe aligns with Rainmatter’s investment philosophy.\n\nI’d love the opportunity to take you through the product vision, early build, and roadmap."
-  },
-  "signature": {
-    "name": "Ankush Nageshwar",
-    "title": "Founder, Flexcraft",
-    "email": "ankush.flexcraft@gmail.com",
-    "phone": "+91-8928456809",
-    "linkedin": "https://www.linkedin.com/company/flexcraft-software-systems/?viewAsMember=true",
-    "website": "https://flexcraft-dev.vercel.app"
-  }
-}
+"""
+Pre-Seed Investment Opportunity in Flexcraft – AI-Powered Project Management Platform
+
+Dear Zerodha / Rainmatter Team,
+
+I hope you're doing well.
+
+I’m reaching out to introduce Flexcraft, a powerful AI-enabled project management and deployment platform designed to transform how modern teams build, collaborate, and ship software. With the product already 20% developed, we're raising our seed round of $1M at an ₹8.5 Cr valuation to fuel development and bring Flexcraft to market.
+
+🚀 Why Flexcraft?
+We’re building a platform that goes beyond task tracking — Flexcraft uses AI to:
+
+Automate project planning & timelines
+
+Provide smart engineer-task matching
+
+Optimize team efficiency through intelligent sprint suggestions
+
+Offer real-time insights for delivery accountability
+
+💸 Why We’re Raising
+With a strong vision, validation from early design partners, and a committed team, we now need capital to:
+
+Scale our engineering, design, and GTM teams
+
+Finalize our MVP for broader pilot testing
+
+Invest in cloud infra to support initial customers
+
+📊 3-Year Financial Overview
+Year 1 (Launch Phase)
+Users: 40,
+000
+
+Revenue: ₹4.07 Cr
+
+Expenses: ₹3.51 Cr
+
+Net: Break-even
+
+Year 2 (Growth Phase)
+Users: 4 Million
+
+Revenue: ₹339 Cr
+
+Expenses: ₹26.6 Cr
+
+Net: ₹313 Cr+
+
+Year 3 (Scale Phase)
+Users: 40 Million
+
+Revenue: ₹3,
+396 Cr
+
+Expenses: ₹2,
+015 Cr
+
+Net: ₹1,
+381 Cr+
+
+*Details expense summary 
+inv - seed 1m$ = 8.5r
+
+### *1st Year (Confirmed)*:
+
+#### *Expenses*:
+- Engineers: ₹1,
+500,
+000 * 5 = ₹7,
+500,
+000
+- Marketing: ₹700,
+000 * 4 = ₹2,
+800,
+000  
+- Sales: ₹700,
+000 * 4 = ₹2,
+800,
+000  
+- Advertising: ₹500,
+000  
+- Designers: ₹1,
+000,
+000 + ₹500,
+000 = ₹1,
+500,
+000  
+- Server Cost: 40,
+000 users * ₹500 = ₹20,
+000,
+000  
+
+*Total Expenses* = ₹7,
+500,
+000 + ₹2,
+800,
+000 + ₹2,
+800,
+000 + ₹500,
+000 + ₹1,
+500,
+000 + ₹20,
+000,
+000 = *₹35,
+100,
+000*
+
+#### *Revenue*:
+- *Customers*: 2,
+000 companies * 20 users per company = *40,
+000 users*  
+  40,
+000 users * $9.99 per user = *$399,
+600*  
+  Convert $399,
+600 to INR (1 USD = 85 INR):  
+  $399,
+600 * 85 INR = ₹33,
+966,
+000  
+- *Annual Revenue*:  
+  ₹33,
+966,
+000 * 12 months = ₹407,
+59,
+20,
+000
+
+#### *Savings* = Revenue - Expenses  
+Savings = ₹40,
+75,
+92,
+00 (Revenue) - ₹35,
+100,
+000 (Expenses)  
+*Savings* = *₹39,
+24,
+19,
+20*  - taxes
+
+---------------------------------------------------------------------------------------------------------------------------
+
+### *2nd Year (Corrected)*:
+
+#### *Expenses*:
+- Engineers: ₹1,
+700,
+000 * 15 = ₹22,
+500,
+000  
+- Marketing: ₹1,
+000,
+000 * 10 = ₹10,
+000,
+000  
+- Sales: ₹1,
+000,
+000 * 10 = ₹10,
+000,
+000  
+- Advertising: ₹15,
+500,
+000  
+- Designers: ₹1,
+300,
+000 + ₹800,
+000 = ₹2,
+100,
+000 * 4 = ₹8,
+400,
+000  
+- Server Cost: 4,
+000,
+000 users * ₹500 = ₹200,
+000,
+000  
+
+*Total Expenses* = ₹22,
+500,
+000 + ₹10,
+000,
+000 + ₹10,
+000,
+000 + ₹15,
+500,
+000 + ₹8,
+400,
+000 + ₹200,
+000,
+000 = *₹266,
+400,
+000*
+
+#### *Revenue*:
+- *Customers*: 20,
+000 companies * 20 users per company = *4,
+000,
+000 users*  
+  4,
+000,
+000 users * $9.99 per user = *$39,
+960,
+000*  
+  Convert $39,
+960,
+000 to INR (1 USD = 85 INR):  
+  $39,
+960,
+000 * 85 INR = ₹3,
+396,
+600,
+000  
+- *Annual Revenue*:  
+  ₹3,
+396,
+600,
+000 * 12 months = ₹40,
+75,
+92,
+000  
+
+#### *Savings* = Revenue - Expenses  
+Savings = ₹40,
+75,
+92,
+000 (Revenue) - ₹266,
+400,
+000 (Expenses)  
+*Savings* = 3,
+13,
+02,
+00,
+000
+
+---------------------------------------------------------------------------------------
+
+### *3rd Year (Corrected)*:
+
+#### *Expenses*:
+- Engineers: ₹2,
+000,
+000 * 30 = ₹60,
+000,
+000  
+- Marketing: ₹1,
+500,
+000 * 15 = ₹22,
+500,
+000  
+- Sales: ₹1,
+000,
+000 * 15 = ₹15,
+000,
+000  
+- Advertising: ₹50,
+000,
+000  
+- Designers: ₹1,
+800,
+000 * 5 = ₹9,
+000,
+000  
+- Server Cost: 40,
+000,
+000 users * ₹500 = ₹20,
+000,
+000,
+000  
+
+*Total Expenses* = ₹60,
+000,
+000 + ₹22,
+500,
+000 + ₹15,
+000,
+000 + ₹50,
+000,
+000 + ₹9,
+000,
+000 + ₹20,
+000,
+000,
+000 = *₹20,
+156,
+500,
+000*
+
+#### *Revenue*:
+- *Customers*: 200,
+000 companies * 20 users per company = *40,
+000,
+000 users*  
+  40,
+000,
+000 users * $9.99 per user = *$399,
+600,
+000*  
+  Convert $399,
+600,
+000 to INR (1 USD = 85 INR):  
+  $399,
+600,
+000 * 85 INR = ₹33,
+966,
+000,
+000  
+- *Annual Revenue*:  
+  ₹33,
+966,
+000,
+000 * 12 months = ₹40,
+75,
+92,
+000,
+000  
+
+#### *Savings* = Revenue - Expenses  
+Savings = ₹40,
+75,
+92,
+000,
+000 (Revenue) - ₹20,
+156,
+500,
+000 (Expenses)  
+*Savings* = *₹40,
+54,
+35,
+92,
+000*
+
+  
+
+
+We’re building Flexcraft with long-term capital efficiency, strong technical roots, and AI-first differentiation — a vision we believe aligns with Rainmatter’s investment philosophy.
+
+I’d love the opportunity to take you through the product vision, early build, and roadmap.
+
+Warm regards,
+Ankush Nageshwar
+Founder , Flexcraft
+ankush.flexcraft@gmail.com | +91-XXXXXXXXXX
+[https: //www.linkedin.com/company/flexcraft-software-systems/?viewAsMember=true] | https://flexcraft-dev.vercel.app
+  // """
