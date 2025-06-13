@@ -1,14 +1,14 @@
 {
   "version": "v1.0.0",
   "entity": {
-    "type": "organisation",
+    "type": "organization",
     "role": "owner",
     "name": "Flexcraft Software Systems",
     "email": "ankush.flexcraft@gmail.com",
     "phone": "+91-8928456809",
     "description": "Flexcraft is an AI-enabled project management and deployment platform designed to automate planning, match engineers to tasks smartly, optimize sprint cycles, and deliver real-time insights for software development teams.",
     "webpageUrl": {
-      "url": "https://flexcraft-dev.vercel.app",
+      "url": "https://flexcraft.netlify.app/",
       "wellKnown": ""
     }
   },
