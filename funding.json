@@ -1,79 +1,95 @@
 {
-  "subject": "Seed Investment Opportunity in Flexcraft – AI-Powered Project Management Platform",
-  "to": "Zerodha / Rainmatter Team",
-  "from": {
-    "name": "Ankush Nageshwar",
-    "position": "Founder, Flexcraft",
+  "version": "v1.0.0",
+  "entity": {
+    "type": "organisation",
+    "role": "owner",
+    "name": "Flexcraft Software Systems",
     "email": "ankush.flexcraft@gmail.com",
     "phone": "+91-8928456809",
-    "linkedin": "https://www.linkedin.com/company/flexcraft-software-systems/?viewAsMember=true",
-    "website": "https://flexcraft-dev.vercel.app"
-  },
-  "pitch": {
-    "summary": "Flexcraft is a powerful AI-enabled project management and deployment platform transforming how modern teams build, collaborate, and ship software. We're raising a $1M seed round at an ₹8.5 Cr valuation to fuel development and go-to-market.",
-    "development_status": "20% product complete",
-    "funding_ask": {
-      "amount_usd": 1000000,
-      "valuation_inr": 85000000
-    },
-    "key_features": [
-      "Automated project planning & timelines",
-      "AI-driven engineer-task matching",
-      "Intelligent sprint suggestions",
-      "Real-time delivery insights"
-    ]
-  },
-  "why_raising": [
-    "Scale engineering, design, and GTM teams",
-    "Complete MVP for pilot rollout",
-    "Invest in cloud infrastructure for onboarding users"
-  ],
-  "financials": {
-    "year_1": {
-      "phase": "Launch Phase",
-      "users": 40000,
-      "revenue_inr": 407592000,
-      "expenses_inr": 35100000,
-      "net_savings_inr": 39241920,
-      "expenses_breakdown": {
-        "engineers": 7500000,
-        "marketing": 2800000,
-        "sales": 2800000,
-        "advertising": 500000,
-        "designers": 1500000,
-        "server_cost": 20000000
-      }
-    },
-    "year_2": {
-      "phase": "Growth Phase",
-      "users": 4000000,
-      "revenue_inr": 3396600000,
-      "expenses_inr": 266400000,
-      "net_savings_inr": 3130200000,
-      "expenses_breakdown": {
-        "engineers": 22500000,
-        "marketing": 10000000,
-        "sales": 10000000,
-        "advertising": 15500000,
-        "designers": 8400000,
-        "server_cost": 200000000
-      }
-    },
-    "year_3": {
-      "phase": "Scale Phase",
-      "users": 40000000,
-      "revenue_inr": 33966000000,
-      "expenses_inr": 20156500000,
-      "net_savings_inr": 13809500000,
-      "expenses_breakdown": {
-        "engineers": 60000000,
-        "marketing": 22500000,
-        "sales": 15000000,
-        "advertising": 50000000,
-        "designers": 9000000,
-        "server_cost": 20000000000
-      }
+    "description": "Flexcraft is an AI-enabled project management and deployment platform designed to automate planning, match engineers to tasks smartly, optimize sprint cycles, and deliver real-time insights for software development teams.",
+    "webpageUrl": {
+      "url": "https://flexcraft-dev.vercel.app",
+      "wellKnown": ""
     }
   },
-  "closing": "We’re building Flexcraft with long-term capital efficiency, strong technical roots, and AI-first differentiation — a vision we believe aligns with Rainmatter’s investment philosophy. I’d love the opportunity to take you through the product vision, early build, and roadmap."
+  "projects": [
+    {
+      "guid": "flexcraft-platform",
+      "name": "Flexcraft",
+      "description": "An intelligent, AI-first project management platform redefining how engineering teams plan, collaborate, and deliver software. The platform provides automation of timelines, smart team-task matching, and real-time sprint analytics.",
+      "webpageUrl": {
+        "url": "https://flexcraft-dev.vercel.app",
+        "wellKnown": ""
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/flexcraft",
+        "wellKnown": ""
+      },
+      "licenses": [
+        "spdx:MIT"
+      ],
+      "tags": [
+        "project-management",
+        "developer-tools",
+        "ai-platform",
+        "engineering-productivity",
+        "collaboration",
+        "saas",
+        "productivity",
+        "software-tools",
+        "automation",
+        "tech-startup"
+      ]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "seed-investment",
+        "type": "bank",
+        "address": "Available on request",
+        "description": "For angel and institutional investors. Bank transfer details shared post due diligence and NDA."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "seed-raise-2024",
+        "status": "active",
+        "name": "Seed Funding Plan – 2024",
+        "description": "We are raising $1M in seed capital at an ₹8.5 Cr valuation to scale our AI-enabled project management platform.",
+        "amount": 1000000,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": [
+          "seed-investment"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "year": 2024,
+        "income": 40759200,
+        "expenses": 35100000,
+        "taxes": 0,
+        "currency": "INR",
+        "description": "Projected financials for Year 1: estimated break-even with 40,000 users and a strong push toward MVP completion and GTM launch."
+      },
+      {
+        "year": 2025,
+        "income": 3396600000,
+        "expenses": 266400000,
+        "taxes": 0,
+        "currency": "INR",
+        "description": "Growth phase with estimated 4M users and strong profitability driven by SaaS subscription revenue."
+      },
+      {
+        "year": 2026,
+        "income": 33966000000,
+        "expenses": 20156500000,
+        "taxes": 0,
+        "currency": "INR",
+        "description": "Scale phase projected to reach 40M users with sustainable infrastructure and high-margin operations."
+      }
+    ]
+  }
 }
